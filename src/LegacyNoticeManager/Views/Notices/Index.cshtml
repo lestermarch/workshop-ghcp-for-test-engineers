@@ -1,0 +1,27 @@
+@model IReadOnlyList<Notice>
+@{
+    ViewData["Title"] = "Notice register";
+}
+
+<h1>Notice register</h1>
+<p>Legacy Notice Manager — fictional training application.</p>
+<p><a class="btn btn-primary" asp-action="Create">Create a notice</a></p>
+<form method="get" class="mb-3">
+    <div class="input-group">
+        <input name="search" value="@ViewBag.Search" placeholder="Search title or region" class="form-control" />
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </div>
+</form>
+<table class="table">
+    <thead><tr><th>Title</th><th>Region</th><th>Severity</th><th>Effective</th><th>Status</th><th></th></tr></thead>
+    <tbody>
+    @foreach (var notice in Model)
+    {
+        <tr>
+            <td>@notice.Title</td><td>@notice.Region</td><td>@notice.Severity</td>
+            <td>@notice.EffectiveDate.ToString("yyyy-MM-dd")</td><td>@notice.Status</td>
+            <td><a asp-action="Details" asp-route-id="@notice.Id">View</a></td>
+        </tr>
+    }
+    </tbody>
+</table>

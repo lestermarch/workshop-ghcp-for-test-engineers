@@ -1,0 +1,18 @@
+risk_id,scenario,priority,review_status
+RISK-01,Notice entity shape is mistaken for policy,medium,review
+RISK-02,Publication lead-time boundary is misunderstood,medium,SME question
+RISK-03,Regional lead-time rule is undocumented,medium,SME question
+RISK-04,Unapproved notice summary is exported,high,review
+RISK-05,Region search semantics create inconsistent results,medium,review
+RISK-06,Approved notice may be edited accidentally,high,review
+RISK-07,Draft notice may be exported,high,review
+RISK-08,Date boundary assumption is wrong,medium,SME question
+RISK-09,Approval decision cannot be reconstructed,high,review
+RISK-10,Concurrent edit overwrites a newer change,medium,review
+RISK-11,Search purpose is not exposed to assistive technology,medium,review
+RISK-12,Emergency timing bypass is misinterpreted as policy,medium,SME question
+RISK-13,Invalid title data persists,medium,review
+RISK-14,Synthetic register data is unavailable to participants,medium,review
+RISK-15,Participant cannot complete the notice lifecycle through the browser,medium,review
+RISK-16,Search results differ based on case/region input,medium,review
+RISK-17,Notice rejection reason is not visible in resulting history,medium,review

@@ -1,0 +1,21 @@
+# EV-02 — Amended date-rule suggestion
+
+- Activity ID: ACT-EXAMPLE-02
+- Date and time (include timezone): 2026-11-04T10:05:00Z (synthetic example)
+- Participant/reviewer: Synthetic reviewer
+- Objective: Review a candidate expiry rule.
+- Tool or agent used: Copilot Chat (example record)
+- Prompt file or skill used: `12-review-date-boundary-behaviour`
+- Context supplied: Controller date comparison and baseline rule prose.
+- Output summary: Initial suggestion said expiry must be strictly after effective date.
+- Files created or changed: None.
+- Findings: Create action rejects only when expiry is earlier; same-day values are accepted.
+- Assumptions: The implementation may not represent policy.
+- Commands executed: No command executed in this illustrative record.
+- Test results: Not run.
+- Human decision: Accepted with amendments.
+- Accepted amendments: Rewrote as observed behavior; requested SME decision on equal dates.
+- Rejected content: Unqualified assertion that same-day expiry is invalid.
+- Unresolved questions: Intended inclusive/exclusive boundary.
+- Residual risk: No policy owner is represented in the fictional exercise.
+- Lesson learned: A precise code reading can still be the wrong requirement.

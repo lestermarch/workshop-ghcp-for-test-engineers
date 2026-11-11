@@ -1,0 +1,185 @@
+/*
+ * theme-tokens.css
+ * -----------------
+ * A semantic design-token layer for reveal.js decks. Load this AFTER the
+ * base theme stylesheet (e.g. reveal.js/theme/black.css) so its overrides
+ * take effect:
+ *
+ *   import "reveal.js/reveal.css";
+ *   import "reveal.js/theme/black.css";
+ *   import "./css/theme-tokens.css";
+ *
+ * Edit the values in :root and .reveal below to match the deck's visual
+ * concept. Do not hardcode colors or sizes on individual slides; change the
+ * tokens here instead so every slide, view, and background state stays
+ * consistent.
+ *
+ * Tokens are grouped by role (color, spacing, focus, code, chart, overlay)
+ * and then mapped onto reveal.js's native --r-* custom properties so this
+ * file works as a drop-in layer over any built-in or custom theme.
+ */
+
+.reveal {
+  /* ---------------------------------------------------------------------
+   * 1. Color roles
+   * Define meaning-based roles, not raw palette entries. Every role must
+   * pass WCAG AA contrast against --color-surface and --color-surface-alt.
+   * ------------------------------------------------------------------- */
+  --color-surface: #ffffff;
+  --color-surface-alt: #f6f8fa;
+  --color-border: #d1d9e0;
+  --color-text: #1f2328;
+  --color-text-muted: #59636e;
+  --color-accent: #0969da;
+  --color-accent-contrast: #ffffff;
+  --color-positive: #1f883d;
+  --color-warning: #9a6700;
+  --color-danger: #cf222e;
+  --color-link: #0969da;
+  --color-link-hover: #0550ae;
+  --color-info-subtle: #ddf4ff;
+  --color-success-subtle: #dafbe1;
+
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+  --radius-small: 6px;
+  --radius-medium: 10px;
+
+  /* ---------------------------------------------------------------------
+   * 2. Spacing and type scale
+   * A small modular scale keeps density consistent across slide patterns.
+   * ------------------------------------------------------------------- */
+  --space-xs: 0.4rem;
+  --space-sm: 0.8rem;
+  --space-md: 1.6rem;
+  --space-lg: 2.4rem;
+  --space-xl: 4rem;
+
+  --type-scale-ratio: 1.25;
+  --type-size-body: 2.25rem;
+  --type-size-h3: calc(var(--type-size-body) * var(--type-scale-ratio));
+  --type-size-h2: calc(var(--type-size-h3) * var(--type-scale-ratio));
+  --type-size-h1: calc(var(--type-size-h2) * var(--type-scale-ratio));
+  --type-line-height: 1.35;
+
+  /* ---------------------------------------------------------------------
+   * 3. Focus and interaction
+   * Every interactive element (links, iframes, controls, custom widgets)
+   * must show this ring; never remove focus styling without a replacement.
+   * ------------------------------------------------------------------- */
+  --focus-ring-color: var(--color-accent);
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+
+  /* ---------------------------------------------------------------------
+   * 4. Code tokens
+   * Keep code legible against every background state; do not rely on the
+   * highlight theme's own defaults for the surrounding chrome.
+   * ------------------------------------------------------------------- */
+  --code-font: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  --code-font-size: 0.85em;
+  --code-background: #f6f8fa;
+  --code-border: #d1d9e0;
+  --code-line-highlight: rgba(9, 105, 218, 0.12);
+
+  /* ---------------------------------------------------------------------
+   * 5. Chart tokens
+   * A small, colorblind-safe categorical palette plus explicit status
+   * colors. Reuse --color-positive/--color-warning/--color-danger for
+   * status series instead of arbitrary hues.
+   * ------------------------------------------------------------------- */
+  --chart-series-1: #0969da;
+  --chart-series-2: #bf8700;
+  --chart-series-3: #1f883d;
+  --chart-series-4: #8250df;
+  --chart-series-5: #cf222e;
+  --chart-grid-line: rgba(31, 35, 40, 0.12);
+  --chart-annotation: var(--color-text-muted);
+
+  /* ---------------------------------------------------------------------
+   * 6. Overlay tokens
+   * For text placed over images, video, or background gradients.
+   * ------------------------------------------------------------------- */
+  --overlay-scrim: rgba(9, 10, 12, 0.55);
+  --overlay-text: #ffffff;
+  --overlay-text-muted: rgba(255, 255, 255, 0.78);
+
+  /* ---------------------------------------------------------------------
+   * 7. Map semantic tokens onto reveal.js's native custom properties.
+   * See https://revealjs.com/themes/ for the full native token list.
+   * ------------------------------------------------------------------- */
+  --r-background-color: var(--color-surface);
+  --r-main-color: var(--color-text);
+  --r-main-font-size: var(--type-size-body);
+  --r-block-margin: var(--space-md);
+  --r-heading-color: var(--color-text);
+  --r-heading-line-height: 1.2;
+  --r-heading1-size: var(--type-size-h1);
+  --r-heading2-size: var(--type-size-h2);
+  --r-heading3-size: var(--type-size-h3);
+  --r-code-font: var(--code-font);
+  --r-link-color: var(--color-link);
+  --r-link-color-hover: var(--color-link-hover);
+  --r-selection-background-color: var(--color-accent);
+  --r-selection-color: var(--color-accent-contrast);
+  --r-controls-color: var(--color-accent);
+  --r-progress-color: var(--color-accent);
+}
+
+/* ---------------------------------------------------------------------
+ * Applied rules — kept minimal on purpose. Prefer editing the tokens
+ * above over adding new selectors here.
+ * ------------------------------------------------------------------- */
+
+.reveal .slides section.has-scrim {
+  background-color: var(--overlay-scrim);
+  color: var(--overlay-text);
+}
+
+.reveal .slides section.has-scrim :is(h1, h2, h3, p, li) {
+  color: inherit;
+}
+
+.reveal pre code {
+  background-color: var(--code-background);
+  border: 1px solid var(--code-border);
+  font-size: var(--code-font-size);
+}
+
+.reveal pre code .highlight-line {
+  background-color: var(--code-line-highlight);
+}
+
+.reveal .status-positive { color: var(--color-positive); }
+.reveal .status-warning { color: var(--color-warning); }
+.reveal .status-danger { color: var(--color-danger); }
+
+/* Visible focus for links, buttons, and any custom interactive element.
+   Do not remove this without supplying an equivalent focus indicator. */
+.reveal a:focus-visible,
+.reveal button:focus-visible,
+.reveal [tabindex]:focus-visible,
+.reveal iframe:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Respect reduced-motion at the token layer so any slide using these
+   tokens for animation timing degrades safely. Auto-Animate and
+   transition duration should be read from JS config, not CSS, but
+   author-added CSS transitions must honor this too. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Print/PDF export renders a separate view; keep scrims and overlays
+   legible without relying on background-image rendering succeeding. */
+@media print {
+  .reveal .slides section.has-scrim {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+  }
+}

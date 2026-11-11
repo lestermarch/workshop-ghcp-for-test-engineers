@@ -1,0 +1,21 @@
+# EV-05 — Baseline integration and browser tests
+
+- Activity ID: ACT-BASELINE-HTTP-UI
+- Date and time (include timezone): 2026-11-04; exact UTC time not retained by the runner
+- Participant/reviewer: Bootstrap validation
+- Objective: Verify the HTTP register and one local browser journey.
+- Tool or agent used: .NET test runner and Playwright
+- Prompt file or skill used: `05-baseline-existing-tests`, `11-generate-ui-tests`
+- Context supplied: Local synthetic repository and loopback application only.
+- Output summary: Two integration tests passed; the browser register test passed against the local app.
+- Files created or changed: `tests/Integration/NoticePagesTests.cs`; historical browser smoke test `tests/EndToEnd/NoticeRegisterTests.cs` (replaced by the isolated journey suite in the browser-testing follow-up).
+- Findings: Register displays a synthetic record; an approved notice exports; the participant can open the register and find the create link.
+- Assumptions: Browser ran against `http://127.0.0.1:5080`; no external service was used.
+- Commands executed: `dotnet test LegacyNoticeManager.sln --no-build --logger "console;verbosity=minimal"` — integration passed 2/2; `$env:E2E_BASE_URL = 'http://127.0.0.1:5080'; dotnet test tests\EndToEnd --no-build --logger "console;verbosity=minimal"` — passed 1/1.
+- Test results: 3 relevant tests passed, 0 failed, 0 skipped across the recorded integration and configured E2E runs.
+- Human decision: Accepted as baseline smoke evidence only.
+- Accepted amendments: None.
+- Rejected content: None.
+- Unresolved questions: Whether register/search and export semantics meet an approved business policy.
+- Residual risk: These checks do not cover the complete notice workflow or accessibility conformance.
+- Lesson learned: A passing home/register journey is not meaningful workflow completeness. This is historical baseline evidence; see EV-06 for the replacement browser suite.

@@ -1,0 +1,18 @@
+requirement_id,candidate_requirement,source_path,confidence,review_status
+REQ-01,A notice stores title region severity dates and status,src/LegacyNoticeManager/Models/Notice.cs,high for implementation,accepted as observed shape
+REQ-02,North publication date is two days after effective date,src/LegacyNoticeManager/Models/Notice.cs,high for code not policy,accepted with policy caveat
+REQ-03,Outer Reach publication date is five days after effective date,src/LegacyNoticeManager/Models/Notice.cs,high for code not policy,deferred for SME
+REQ-04,Only approved notice records can be exported,src/LegacyNoticeManager/Controllers/NoticesController.cs,high for implementation,observed but not exhaustively tested
+REQ-05,Region search currently uses exact equality,src/LegacyNoticeManager/Controllers/NoticesController.cs,high for implementation,observed behaviour
+REQ-06,Approved notices are blocked from editing,src/LegacyNoticeManager/Controllers/NoticesController.cs,high for implementation,observed behaviour
+REQ-07,Draft notices cannot be exported,src/LegacyNoticeManager/Controllers/NoticesController.cs,high for implementation,observed behaviour
+REQ-08,Create accepts an expiry date equal to the effective date,src/LegacyNoticeManager/Controllers/NoticesController.cs,high for implementation,policy confirmation required
+REQ-09,Approval updates status without an approval audit event,src/LegacyNoticeManager/Controllers/NoticesController.cs,high for implementation,observed gap
+REQ-10,Concurrent stale writes have no explicit conflict check,src/LegacyNoticeManager/Models/Notice.cs,high for implementation,observed gap
+REQ-11,The register search field lacks an explicit label,src/LegacyNoticeManager/Views/Notices/Index.cshtml,high for rendered markup,observed accessibility gap
+REQ-12,Emergency notices calculate publication on the effective date,src/LegacyNoticeManager/Models/Notice.cs,high for implementation,policy confirmation required
+REQ-13,Notice titles shorter than five characters fail model validation,src/LegacyNoticeManager/Models/Notice.cs,high for implementation,observed behavior
+REQ-14,The register displays synthetic notices from persistence,src/LegacyNoticeManager/Controllers/NoticesController.cs,high for implementation,observed behavior
+REQ-15,A participant can create edit approve and export a notice through the browser workflow,src/LegacyNoticeManager/Controllers/NoticesController.cs,high for rendered workflow,observed interface
+REQ-16,Region search currently uses exact equality and does not normalize input,src/LegacyNoticeManager/Controllers/NoticesController.cs,high for implementation,observed behaviour
+REQ-17,A draft notice can be rejected with a recorded reason,src/LegacyNoticeManager/Controllers/NoticesController.cs,high for implementation,observed behaviour

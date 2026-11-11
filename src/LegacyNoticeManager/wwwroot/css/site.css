@@ -1,0 +1,79 @@
+html {
+  font-size: 15px;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: #e5e9ec;
+  color: #202b33;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.legacy-navigation {
+  background: #173c55;
+  border-bottom: 4px solid #9aafbd !important;
+}
+
+.legacy-navigation .navbar-brand {
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+.legacy-navigation .nav-link {
+  color: #e5edf2;
+}
+
+.legacy-shell {
+  min-height: 68vh;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem 2rem;
+  background: #fff;
+  border: 1px solid #aeb9c1;
+  box-shadow: 0 1px 3px #8f9aa244;
+}
+
+h1 {
+  padding-bottom: .45rem;
+  border-bottom: 1px solid #bbc5cc;
+  color: #173c55;
+  font-size: 1.7rem;
+}
+
+.table thead th {
+  background: #dce5eb;
+  border-bottom: 2px solid #8799a6;
+  color: #173c55;
+}
+
+.btn,
+.form-control,
+.form-select {
+  border-radius: 2px;
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus,
+.btn:focus-visible,
+.nav-link:focus-visible {
+  box-shadow: 0 0 0 .2rem #f0c64c;
+  outline: 2px solid #173c55;
+  outline-offset: 1px;
+}
+
+.validation-summary-errors {
+  margin-bottom: 1rem;
+  padding: .75rem 1rem;
+  border-left: 4px solid #a12622;
+  background: #fbefee;
+}
+
+.footer {
+  position: static;
+  padding: 1rem 0;
+  background: #d5dde2;
+}

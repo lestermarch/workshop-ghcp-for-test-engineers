@@ -1,0 +1,18 @@
+requirement_id,source_path,risk_id,test_id,test_path,evidence_id,review_decision
+REQ-01,src/LegacyNoticeManager/Models/Notice.cs,RISK-01,TEST-UNIT-01,tests/Unit/NoticeBaselineTests.cs,EV-01,accepted as observed shape
+REQ-02,src/LegacyNoticeManager/Models/Notice.cs,RISK-02,TEST-UNIT-02,tests/Unit/NoticeBaselineTests.cs,EV-02,accepted with policy caveat
+REQ-03,src/LegacyNoticeManager/Models/Notice.cs,RISK-03,TEST-UNIT-03,tests/Unit/NoticeBaselineTests.cs,EV-01,deferred for SME
+REQ-04,src/LegacyNoticeManager/Controllers/NoticesController.cs,RISK-04,TEST-INT-02,tests/Integration/NoticePagesTests.cs,EV-03,observed but not exhaustively tested
+REQ-14,src/LegacyNoticeManager/Controllers/NoticesController.cs,RISK-14,TEST-INT-01,tests/Integration/NoticePagesTests.cs,EV-05,observed behavior only
+REQ-15,src/LegacyNoticeManager/Views/Notices/Index.cshtml,RISK-15,TEST-E2E-01,tests/EndToEnd/NoticeJourneyTests.cs,EV-06,observed interface only
+REQ-16,src/LegacyNoticeManager/Controllers/NoticesController.cs,RISK-16,TEST-E2E-02,tests/EndToEnd/NoticeJourneyTests.cs,EV-06,observed behaviour only
+REQ-17,src/LegacyNoticeManager/Controllers/NoticesController.cs,RISK-17,TEST-E2E-03,tests/EndToEnd/NoticeJourneyTests.cs,EV-06,observed behaviour only
+REQ-05,src/LegacyNoticeManager/Controllers/NoticesController.cs,RISK-05,TEST-REF-01,tests/Reference/ReferenceBehaviorTests.cs,EV-04,observed behavior only
+REQ-06,src/LegacyNoticeManager/Controllers/NoticesController.cs,RISK-06,TEST-REF-02,tests/Reference/ReferenceBehaviorTests.cs,EV-04,observed behavior only
+REQ-07,src/LegacyNoticeManager/Controllers/NoticesController.cs,RISK-07,TEST-REF-03,tests/Reference/ReferenceBehaviorTests.cs,EV-04,observed behavior only
+REQ-08,src/LegacyNoticeManager/Controllers/NoticesController.cs,RISK-08,TEST-REF-04,tests/Reference/ReferenceBehaviorTests.cs,EV-04,SME confirmation required
+REQ-09,src/LegacyNoticeManager/Controllers/NoticesController.cs,RISK-09,TEST-REF-05,tests/Reference/ReferenceBehaviorTests.cs,EV-04,observed gap only
+REQ-10,src/LegacyNoticeManager/Models/Notice.cs,RISK-10,TEST-REF-06,tests/Reference/ReferenceBehaviorTests.cs,EV-04,observed gap only
+REQ-11,src/LegacyNoticeManager/Views/Notices/Index.cshtml,RISK-11,TEST-REF-07,tests/Reference/ReferenceBehaviorTests.cs,EV-04,observed markup only
+REQ-12,src/LegacyNoticeManager/Models/Notice.cs,RISK-12,TEST-REF-08,tests/Reference/ReferenceBehaviorTests.cs,EV-04,SME confirmation required
+REQ-13,src/LegacyNoticeManager/Models/Notice.cs,RISK-13,TEST-REF-09,tests/Reference/ReferenceBehaviorTests.cs,EV-04,observed behavior only

@@ -1,0 +1,21 @@
+# EV-03 — Rejected unverified refactor
+
+- Activity ID: ACT-EXAMPLE-03
+- Date and time (include timezone): 2026-11-04T10:10:00Z (synthetic example)
+- Participant/reviewer: Synthetic reviewer
+- Objective: Review a proposed broad controller rewrite.
+- Tool or agent used: Copilot Chat (example record)
+- Prompt file or skill used: `17-propose-safe-refactoring`
+- Context supplied: Controller and baseline tests.
+- Output summary: Proposed replacing workflow handling and persistence in one change.
+- Files created or changed: None.
+- Findings: The suggestion changed validation and transition behaviour without a policy decision.
+- Assumptions: It assumed rejected notices cannot be re-approved.
+- Commands executed: None.
+- Test results: Not run.
+- Human decision: Rejected.
+- Accepted amendments: None.
+- Rejected content: Broad rewrite and unverified transition assumption.
+- Unresolved questions: Which state transitions should be allowed.
+- Residual risk: Existing tests under-specify workflow.
+- Lesson learned: Passing the tiny baseline suite would not justify a behaviour-changing rewrite.

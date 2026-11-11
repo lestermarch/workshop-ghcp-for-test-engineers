@@ -1,0 +1,21 @@
+# EV-04 — Facilitator characterization suite
+
+- Activity ID: ACT-BASELINE-REFERENCE
+- Date and time (include timezone): 2026-11-04; exact UTC time not retained by the runner
+- Participant/reviewer: Bootstrap validation
+- Objective: Run the separate facilitator characterization suite against the synthetic baseline.
+- Tool or agent used: .NET test runner and Copilot-assisted bootstrap
+- Prompt file or skill used: `05-baseline-existing-tests`, `traceability-mapping`
+- Context supplied: Local synthetic repository only.
+- Output summary: Nine tests describe current search, state, export, date, audit, concurrency, accessibility, and model-validation behaviours.
+- Files created or changed: `tests/Reference/ReferenceBehaviorTests.cs`, `evidence/traceability.csv`.
+- Findings: Characterization tests passed; the observations do not constitute approved policy.
+- Assumptions: SQLite local data and sample dates are synthetic.
+- Commands executed: `dotnet test tests\Reference\LegacyNoticeManager.ReferenceTests.csproj --logger "console;verbosity=minimal"` — passed, 9/9, 0 skipped.
+- Test results: Passed 9, failed 0, skipped 0.
+- Human decision: Accepted as facilitator reference examples, not participant requirements.
+- Accepted amendments: Findings remain labelled as observed behaviour.
+- Rejected content: None.
+- Unresolved questions: Whether current date, search, state, audit, and concurrency semantics match desired policy.
+- Residual risk: These tests can make flawed behaviour appear stable if copied without review.
+- Lesson learned: Keep characterization tests separate from normative acceptance tests.

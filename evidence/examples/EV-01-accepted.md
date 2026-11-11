@@ -1,0 +1,21 @@
+# EV-01 — Accepted observed data-shape summary
+
+- Activity ID: ACT-EXAMPLE-01
+- Date and time (include timezone): 2026-11-04T10:00:00Z (synthetic example)
+- Participant/reviewer: Synthetic reviewer
+- Objective: Summarise the persisted notice fields.
+- Tool or agent used: Copilot Chat (example record)
+- Prompt file or skill used: `02-recover-business-rules`
+- Context supplied: `Notice.cs`; no external material.
+- Output summary: The entity has title, description, region, severity, dates, status, owner, emergency and rejection fields.
+- Files created or changed: None.
+- Findings: Confirmed in `src/LegacyNoticeManager/Models/Notice.cs`.
+- Assumptions: None about policy.
+- Commands executed: `dotnet test tests/Unit` — example fixture; see actual run records before relying on it.
+- Test results: Synthetic illustration, not a claim about a present run.
+- Human decision: Accepted as an observed data-shape summary.
+- Accepted amendments: Added explicit limitation that fields do not establish approved policy.
+- Rejected content: None.
+- Unresolved questions: Whether each field is policy-mandated.
+- Residual risk: Inference could be mistaken for requirement.
+- Lesson learned: Use “the code stores” unless policy evidence exists.

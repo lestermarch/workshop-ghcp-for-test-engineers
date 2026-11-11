@@ -1,0 +1,25 @@
+## Build output
+**/bin/
+**/obj/
+TestResults/
+coverage/
+*.coverage
+workshop/.progress.json
+workshop/participant-work/
+
+## Local database and secrets
+*.db
+*.db-shm
+*.db-wal
+*.log
+.env
+.env.*
+!.env.example
+
+## IDE and operating system
+.vs/
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db

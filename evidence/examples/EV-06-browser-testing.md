@@ -1,0 +1,21 @@
+# EV-06 — Browser exploration and Playwright journeys
+
+- Activity ID: ACT-BROWSER-JOURNEYS
+- Date and time (include timezone): 2026-11-04 11:19 UTC
+- Participant/reviewer: Automated workshop validation; facilitator review pending
+- Objective: Exercise the synthetic notice workflow through Chromium, preserve failure evidence, and generate an offline report.
+- Tool or agent used: .NET test runner, Microsoft.Playwright, Chromium, and Python report generator
+- Prompt file or skill used: None; the browser journeys were implemented directly from the workshop brief. The listed prompt files document the workshop workflow.
+- Context supplied: Local synthetic repository, loopback-only app, temporary SQLite database, and synthetic test inputs.
+- Output summary: Create/validation/edit/approve/export, search observation, and rejection/audit journeys passed. The first run exposed that the server-assigned Owner value was validated before being set; the controller now removes that bound ModelState entry and assigns the default before validation. The opt-in evidence demo failed intentionally and wrote a screenshot and Playwright trace. The offline HTML report was generated.
+- Files created or changed: `tests/EndToEnd/BrowserApplicationFixture.cs`, `tests/EndToEnd/BrowserTestBase.cs`, `tests/EndToEnd/NoticeJourneyTests.cs`, `src/LegacyNoticeManager/Controllers/NoticesController.cs`, `scripts/create_e2e_report.py`, and `TestResults/BrowserArtifacts/Failure_evidence_capture_demo.{png,zip}` (generated, ignored by Git).
+- Findings: The create page exposes generated labels `EffectiveDate` and `ExpiryDate`. On initial implementation the hidden Owner field caused the create action to return the form with “The Owner field is required.” The intentional failure capture produced a 31,425-byte PNG and a 100,149-byte trace archive; `TestResults/E2E/index.html` was generated at 2,085 bytes.
+- Assumptions: The existing fallback value `Workshop user` is intended for notices whose owner is not supplied by an authenticated identity.
+- Commands executed: `dotnet test tests/EndToEnd --logger "console;verbosity=minimal"` — passed 3, failed 0, skipped the opt-in demo; `$env:E2E_CAPTURE_FAILURE='true'; dotnet test tests/EndToEnd --no-build` — passed 3 and intentionally failed the evidence demo; `.\scripts\e2e.ps1 -Mode headless` — passed 3, skipped 1 and emitted TRX; `python scripts\create_e2e_report.py` — generated the offline report.
+- Test results: Regular browser suite passed 3/3 with the intentionally opt-in demo skipped; intentional capture demo produced the expected single failure with screenshot and trace.
+- Human decision: Facilitator/reviewer confirmation is still required that `Workshop user` is the appropriate fallback owner; no business-policy approval is claimed.
+- Accepted amendments: Browser selectors follow the currently rendered date labels; application code initializes the server-managed owner before validating the create form.
+- Rejected content: None.
+- Unresolved questions: Whether user-facing labels should use spaced display names; whether the owner fallback should remain or be supplied from a real identity in a production application.
+- Residual risk: The journeys use synthetic data and do not establish business-policy correctness or production authentication behavior.
+- Lesson learned: A passing happy-path browser test is not enough; preserve failed-state artifacts and separate observed behavior from policy decisions.

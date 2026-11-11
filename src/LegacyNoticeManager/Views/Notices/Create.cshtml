@@ -1,0 +1,12 @@
+@model Notice
+@{
+    ViewData["Title"] = "Create notice";
+}
+<h1>Create notice</h1>
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <partial name="_NoticeFields" model="Model" />
+    <button class="btn btn-primary" type="submit">Save draft</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

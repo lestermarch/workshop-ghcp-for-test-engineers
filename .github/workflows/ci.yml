@@ -1,0 +1,74 @@
+name: Build, test, and validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Build, tests, documentation, and traceability
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Restore
+        run: dotnet restore LegacyNoticeManager.sln
+      - name: Build
+        run: dotnet build LegacyNoticeManager.sln --no-restore --configuration Release
+      - name: Unit tests and coverage
+        run: dotnet test tests/Unit --no-build --configuration Release --collect:"XPlat Code Coverage" --logger "trx;LogFileName=unit.trx"
+      - name: Integration tests and coverage
+        run: dotnet test tests/Integration --no-build --configuration Release --collect:"XPlat Code Coverage" --logger "trx;LogFileName=integration.trx"
+      - name: Facilitator characterization tests
+        run: dotnet test tests/Reference --configuration Release --collect:"XPlat Code Coverage" --logger "trx;LogFileName=reference.trx"
+      - name: Formatting
+        run: dotnet format LegacyNoticeManager.sln --verify-no-changes --no-restore
+      - name: Repository checks
+        run: |
+          python3 scripts/validate_repository.py
+          python3 scripts/check_workshop.py
+          python3 scripts/validate_traceability.py
+          python3 scripts/check_workshop_readiness.py
+          python3 scripts/check_secrets.py
+      - name: Upload test results and coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-evidence
+          path: |
+            **/TestResults/**/*.trx
+            **/TestResults/**/coverage.cobertura.xml
+          if-no-files-found: warn
+
+  browser:
+    name: Playwright notice-register journey
+    runs-on: ubuntu-latest
+    needs: validate
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Restore and build
+        run: dotnet build LegacyNoticeManager.sln --configuration Release
+      - name: Install Chromium
+        run: pwsh tests/EndToEnd/bin/Release/net10.0/playwright.ps1 install --with-deps chromium
+      - name: Run browser test
+        run: dotnet test tests/EndToEnd --configuration Release --logger "trx;LogFileName=e2e.trx" --results-directory TestResults/E2E
+      - name: Create browser test report
+        if: always()
+        run: python3 scripts/create_e2e_report.py
+      - name: Upload browser test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-test-evidence
+          path: |
+            TestResults/E2E/**
+            TestResults/BrowserArtifacts/**
+          if-no-files-found: warn
