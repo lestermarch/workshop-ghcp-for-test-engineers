@@ -37,7 +37,7 @@ jobs:
           python3 scripts/check_secrets.py
       - name: Upload test results and coverage
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: test-evidence
           path: |
@@ -65,7 +65,7 @@ jobs:
         run: python3 scripts/create_e2e_report.py
       - name: Upload browser test evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: browser-test-evidence
           path: |
